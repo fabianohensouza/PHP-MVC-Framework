@@ -1,0 +1,17 @@
+{
+    "name": "fhsdev/php-mvc-framework",
+    "description": "PHP MVC framework taught by the Youtube Channel The Codeholic",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./",
+            "Fhsdev\\PhpMvcFramework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "FHS Dev",
+            "email": "fhsdev@gmail.com"
+        }
+    ],
+    "require": {}
+}
