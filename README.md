@@ -20,4 +20,4 @@ Support the content author by subscribing his Youtube Channel by [clicking here!
  - Session Flash messages
  - Middlewares
  - Application events
- - Framework reusable/installable core
+ - Framework reusable/Installable core
