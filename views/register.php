@@ -4,23 +4,9 @@
 
 use app\core\form\Form;
 
-$form = Form::begin('post'); 
- 
- ?>
-<?php $form = \app\core\form\Form::begin('post') ?>
+$form = Form::begin('post');
 
-    <?php echo $form->field($model, 'firstname') ?>
-    <?php echo $form->field($model, 'lastname') ?>
-    <?php echo $form->field($model, 'email') ?>
-    <?php echo $form->field($model, 'password') ?>
-    <?php echo $form->field($model, 'passwordConfirm') ?>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-
-<?php $form = \app\core\form\Form::end() ?>
-
-<!--
-<form action="" method="post">
+?>
   <div class="row">
     <div class="col">
       <div class="mb-3">
@@ -49,4 +35,3 @@ $form = Form::begin('post');
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
--->
