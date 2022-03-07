@@ -25,7 +25,21 @@ class Field
 
     public function __toString()
     {
-        return '1';
+        return sprintf('
+            <div class="mb-3">
+                <label>%s</label>
+                <input type="text" name="%s" value="%s" class="form-control %s">
+                <div class="invalid-feedback">
+                    %s
+                </div>
+            </div>
+        ',
+            ucfirst($this->attribute),
+            $this->attribute,
+            $this->model->{$this->attribute},
+            $this->model->hasError($this->attribute) ? ' is-invalid' : '',
+            $this->model->getFirstError($this->attribute)
+        );
     }
     
 }
