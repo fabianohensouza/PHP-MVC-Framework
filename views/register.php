@@ -10,9 +10,9 @@
         <?php echo $form->field($model, 'lastname') ?>
     </div>
 </div>
-<?php echo $form->field($model, 'email') ?>
-<?php echo $form->field($model, 'password') ?>
-<?php echo $form->field($model, 'passwordConfirm') ?>
+<?php echo $form->field($model, 'email')->typeField('TYPE_EMAIL') ?>
+<?php echo $form->field($model, 'password')->typeField('TYPE_PASSWORD') ?>
+<?php echo $form->field($model, 'passwordConfirm')->typeField('TYPE_PASSWORD') ?>
 <?php echo '<button type="submit" class="btn btn-primary">Submit</button>' ?>
 
 <?php app\core\form\Form::end() ?>
