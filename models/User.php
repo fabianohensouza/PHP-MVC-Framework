@@ -3,13 +3,15 @@
 
 namespace app\models;
 
+use app\core\DbModel;
+
 /**
- * Class RegisterModel
+ * Class User
  *
  *@author FHS Dev <fhsdev@gmail.com>
  *@package app\models
  */
-class RegisterModel extends Model
+class User extends DbModel
 {
     public string $firstname = '';
     public string $lastname = '';
@@ -17,16 +19,18 @@ class RegisterModel extends Model
     public string $password = '';
     public string $passwordConfirm = '';
 
+    public function tableName(): string
+    {
+        return 'users';
+    }
+
     public function register()
     {
-
-        echo 'Creating new user';
-        
+        return $this->save();        
     }
 
     public function rules(): array
     { 
-
         return [
             'firstname' => [self::RULE_REQUIRED],
             'lastname' => [self::RULE_REQUIRED],
@@ -35,5 +39,10 @@ class RegisterModel extends Model
             'passwordConfirm' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']]
         ]; 
 
+    }
+
+    public function attributes(): array
+    {
+        return ['firstname', 'lastname', 'email', 'password'];
     }
 }
