@@ -34,9 +34,7 @@ abstract class Model
     abstract public function rules(): array;
 
     public function validate()
-
-    {
-        
+    {        
         foreach ($this->rules() as $attribute => $rules) {
 
             $value = $this->{$attribute};
@@ -75,8 +73,7 @@ abstract class Model
     }
 
     public function addError(string $attribute, string $rule, array $params = [])
-    {
-        
+    {        
         $message = $this->errorMessagem()[$rule] ?? '';
         foreach ($params as $key => $value) {
             $message = str_replace("{{$key}}", $value, $message);
@@ -85,8 +82,7 @@ abstract class Model
     }
 
     public function errorMessagem(): array
-    {
-        
+    {        
         return [
             self::RULE_REQUIRED => 'This field is required',
             self::RULE_EMAIL => 'This field must be a valid email address',
@@ -97,14 +93,12 @@ abstract class Model
     }
 
     public function hasError(string $attribute)
-    {
-        
+    {        
         return $this->errors[$attribute] ?? FALSE;
     }
 
     public function getFirstError(string $attribute)
-    {
-        
+    {        
         return $this->errors[$attribute][0] ?? FALSE;
     }
 
