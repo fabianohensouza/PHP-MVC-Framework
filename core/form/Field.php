@@ -41,7 +41,7 @@ class Field
                 </div>
             </div>
         ',
-            ucfirst($this->attribute),
+            $this->model->labels()[$this->attribute] ?? ucfirst($this->attribute),
             $this->type,
             $this->attribute,
             $this->model->{$this->attribute},

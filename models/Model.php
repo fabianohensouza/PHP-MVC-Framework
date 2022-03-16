@@ -36,6 +36,11 @@ abstract class Model
 
     abstract public function rules(): array;
 
+    public function labels(): array
+    {
+        return [];
+    }
+
     public function validate()
     {        
         foreach ($this->rules() as $attribute => $rules) {
@@ -95,7 +100,8 @@ abstract class Model
     {        
         $message = $this->errorMessagem()[$rule] ?? '';
         foreach ($params as $key => $value) {
-            $message = str_replace("{{$key}}", $value, $message);
+            $label = $this->labels()[$value] ?? $value;
+            $message = str_replace("{{$key}}", $label, $message);
         }
         $this->errors[$attribute][] = $message;
     }
