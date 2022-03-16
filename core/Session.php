@@ -29,10 +29,7 @@ class Session
         }
 
         $_SESSION[self::FLASH_KEY] = $flashMessages;
-
-echo '<pre>';
-var_dump($_SESSION[self::FLASH_KEY]);
-echo '</pre>';
+        
     }
 
     public function setFlahsh($key, $message)
@@ -46,11 +43,19 @@ echo '</pre>';
 
     public function getFlahsh($key)
     {
-        return $_SESSION[self::FLASH_KEY][$key]['value'];
+        return $_SESSION[self::FLASH_KEY][$key]['value'] ?? false;
     }
 
     public function __destruct()
-    {
-        
+    {        
+        $flashMessages = $_SESSION[self::FLASH_KEY] ?? [];
+
+        foreach ($flashMessages as $key => &$flashMessage) {
+            if($flashMessage['remove']){
+                unset($flashMessages[$key]);
+            }
+        }
+
+        $_SESSION[self::FLASH_KEY] = $flashMessages;
     }
 }
