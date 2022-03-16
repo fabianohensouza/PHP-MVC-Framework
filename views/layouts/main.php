@@ -1,3 +1,7 @@
+<?php
+    use app\core\Application;
+?>
+
 <!doctype html>
     <html lang="en">
         <head>
@@ -37,6 +41,11 @@
             </nav>
 
             <div class="container text-dark">
+                <?php if(Application::$app->session->getFlahsh('success')): ?>
+                    <div class="alert alert-success">
+                        <?php echo Application::$app->session->getFlahsh('success') ?>
+                    </div>
+                <?php endif; ?>
                 {{content}}
             </div>
             

@@ -5,7 +5,7 @@ namespace app\core;
 
 
 /**
- * Class Application
+ * Class Router
  *
  *@author FHS Dev <fhsdev@gmail.com>
  *@package app\core
