@@ -20,6 +20,7 @@ class Application
     public Controller $controller;
     public Database $db;
     public Session $session;
+    public ?DbModel $user;
     public static Application $app;
     public function __construct(string $rootPath, array $config)
     {
@@ -56,8 +57,17 @@ class Application
         $this->controller = $controller;
     }
 
-    public function login(DbModel $dbModel)
+    public function login(DbModel $user)
     {
-        #TODO
+        $this->user = $user;
+        $primaryKey = $user->primaryKey();
+        $primaryValue = $user->{$primaryKey};
+
+        echo '<pre>';
+        var_dump($primaryValue);
+        echo '</pre>';
+        exit;
+        
+
     }
 }

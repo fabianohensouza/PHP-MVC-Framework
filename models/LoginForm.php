@@ -49,13 +49,7 @@ class LoginForm extends Model
         if(!password_verify($this->password, $user->password)) {
             $this->addError('password', 'Incorrect e-mail or password.');
             return false;
-        }
-
-        echo '<pre>';
-        var_dump($user);
-        echo '</pre>';
-        exit;
-        
+        }        
 
         return Application::$app->login($user);
     }
