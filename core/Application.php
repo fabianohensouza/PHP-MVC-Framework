@@ -55,4 +55,9 @@ class Application
     {
         $this->controller = $controller;
     }
+
+    public function login(DbModel $dbModel)
+    {
+        #TODO
+    }
 }

@@ -13,8 +13,8 @@ use app\core\Application;
  */
 class LoginForm extends Model
 {
-    public string $email;
-    public string $password;
+    public string $email = '';
+    public string $password = '';
 
     public function rules(): array
     { 
@@ -33,7 +33,7 @@ class LoginForm extends Model
     public function labels(): array
     {
         return [
-                'email' => 'E-mail address',
+                'email' => 'E-mail',
                 'password' => 'Password',
             ];
     }
@@ -46,10 +46,16 @@ class LoginForm extends Model
             return false;
         }
 
-        if(password_verify($this->password, $user->password)) {
+        if(!password_verify($this->password, $user->password)) {
             $this->addError('password', 'Incorrect e-mail or password.');
             return false;
         }
+
+        echo '<pre>';
+        var_dump($user);
+        echo '</pre>';
+        exit;
+        
 
         return Application::$app->login($user);
     }

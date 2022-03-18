@@ -13,7 +13,7 @@ use app\models\Model;
  */
 abstract class DbModel extends Model
 {
-    abstract public function tableName(): string;
+    abstract public static function tableName(): string;
 
     abstract public function attributes(): array;
 
@@ -38,11 +38,17 @@ abstract class DbModel extends Model
     public static function find(array $where)
     {
         $tableName = static::tableName();
-        $where = ['email' => 'teste'];
-        $key = array_keys($where)[0];
-        $value = array_values($where)[0];
-        $statement = self::prepare("SELECT * FROM $tableName WHERE $key = :value");
-        $statement->bindValue(":value", $value);
+        $attributes = array_keys($where);
+        $attributes = implode(" AND ", array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $query = "SELECT * FROM $tableName WHERE " . $attributes;
+        $statement = self::prepare($query);
+
+        foreach ($where as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+
+        $statement->execute();
+        return $statement->fetchObject(static::class);
 
     }
 
