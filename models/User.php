@@ -62,4 +62,9 @@ class User extends DbModel
                 'passwordConfirm' => 'Confirm Password'
             ];
     }
+
+    public static function find(array $data)
+    {
+        # code...
+    }
 }
