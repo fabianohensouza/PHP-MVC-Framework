@@ -3,6 +3,8 @@
 
 namespace app\models;
 
+use app\core\Application;
+
 /**
  * Class LoginForm
  *
@@ -39,5 +41,16 @@ class LoginForm extends Model
     public function login()
     {
         $user = User::find(['email' => $this->email]);
+        if(!$user) {
+            $this->addError('email', 'Incorrect e-mail or password.');
+            return false;
+        }
+
+        if(password_verify($this->password, $user->password)) {
+            $this->addError('password', 'Incorrect e-mail or password.');
+            return false;
+        }
+
+        Application::$app->login($user);
     }
 }
