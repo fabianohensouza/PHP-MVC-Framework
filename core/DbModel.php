@@ -17,7 +17,7 @@ abstract class DbModel extends Model
 
     abstract public function attributes(): array;
 
-    abstract public function primaryKey(): string;
+    abstract static public function primaryKey(): string;
 
     public function save()
     {
