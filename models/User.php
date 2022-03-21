@@ -4,6 +4,7 @@
 namespace app\models;
 
 use app\core\DbModel;
+use app\core\UserModel;
 
 /**
  * Class User
@@ -11,7 +12,7 @@ use app\core\DbModel;
  *@author FHS Dev <fhsdev@gmail.com>
  *@package app\models
  */
-class User extends DbModel
+class User extends UserModel
 {
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
@@ -33,6 +34,11 @@ class User extends DbModel
     public static function primaryKey(): string
     {
         return 'id';
+    }
+
+    public function getDisplayName(): string
+    {
+        return $this->firstname . ' ' . $this->lastname;
     }
 
     public function save()
