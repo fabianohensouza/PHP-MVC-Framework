@@ -17,6 +17,7 @@ class User extends DbModel
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 2;
 
+    public int $id = 0;
     public string $firstname = '';
     public string $lastname = '';
     public string $email = '';
