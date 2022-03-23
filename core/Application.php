@@ -15,11 +15,12 @@ class Application
 {
     public static string $ROOT_DIR;
 
+    public string $layout = 'main';
     public string $userClass;
     public Router $router;
     public Response $response;
     public Request $request;
-    public Controller $controller;
+    public ?Controller $controller = null;
     public Database $db;
     public Session $session;
     public ?DbModel $user;

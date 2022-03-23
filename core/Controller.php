@@ -14,6 +14,11 @@ use app\core\Application;
 class Controller
 {
     public string $layout = 'main';
+    /**
+     * @var 
+     */
+    public array $middlewares = [];
+
     public function render(String $view, Array $params = [])
     {
         return Application::$app->router->renderView($view, $params);
@@ -22,5 +27,10 @@ class Controller
     public function setLayout(String $layout)
     {
         $this->layout = $layout;
+    }
+
+    public function registerMiddleware(AuthMiddleware $middleware)
+    {
+        # code...
     }
 }
