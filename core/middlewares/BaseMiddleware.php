@@ -9,7 +9,7 @@ namespace app\core\middlewares;
  *@author FHS Dev <fhsdev@gmail.com>
  *@package app\core\middlewares
  */
-class BaseMiddleware
+abstract class BaseMiddleware
 {
-
+    abstract public function execute();
 }

@@ -4,6 +4,7 @@
 namespace app\core;
 
 use app\core\Application;
+use app\core\middlewares\BaseMiddleware;
 
 /**
  * Class Classname
@@ -15,7 +16,7 @@ class Controller
 {
     public string $layout = 'main';
     /**
-     * @var 
+     * @var app\core\middlewares\BaseMiddleware[]
      */
     public array $middlewares = [];
 
@@ -29,8 +30,8 @@ class Controller
         $this->layout = $layout;
     }
 
-    public function registerMiddleware(AuthMiddleware $middleware)
+    public function registerMiddleware(BaseMiddleware $middleware)
     {
-        # code...
+        $this->middlewares[] = $middleware;
     }
 }
