@@ -9,6 +9,7 @@ use app\core\Response;
 use app\core\Controller;
 use app\core\Application;
 use app\models\LoginForm;
+use app\core\middlewares\AuthMiddleware;
 
 /**
  * Class AuthController
