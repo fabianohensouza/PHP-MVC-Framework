@@ -13,5 +13,6 @@ use Exception;
  */
 class ForbidenException extends Exception
 {
-
+    protected $messagem = 'You don\'t have permission to access this page.';
+    protected $code = 403;
 }

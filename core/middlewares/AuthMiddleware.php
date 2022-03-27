@@ -4,6 +4,7 @@
 namespace app\core\middlewares;
 
 use app\core\Application;
+use app\core\exception\ForbidenException;
 
 /**
  * Class AuthMiddleware
@@ -28,7 +29,7 @@ class AuthMiddleware extends BaseMiddleware
     {
         if(Application::isGuest()) {
             if(empty($this->actions) || in_array(Application::$app->controller->action, $this->actions)) {
-                
+                throw new ForbidenException();                
             }
         }
     }
