@@ -3,6 +3,7 @@
 
 namespace app\core;
 
+use app\core\exception\NotFoundException;
 
 /**
  * Class Router
@@ -48,7 +49,7 @@ class Router
 
         if ($callback === FALSE) {
             $this->response->setStatusCode(404);
-            return $this->renderView('_404');
+            throw new NotFoundException();
         }
 
         if (is_string($callback)) {
@@ -56,7 +57,7 @@ class Router
         }
 
         if (is_array($callback)) {
-            /** @var \app\core\Controller $controller */
+            /** @var $controller \app\core\Controller */
             $controller = new $callback[0]();
             Application::$app->controller = $controller;
             $controller->action = $callback[1];
