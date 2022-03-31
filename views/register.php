@@ -1,5 +1,8 @@
 <?php
-/** @var $model \app\models\User */
+    /** @var $model \app\models\User
+     * @var $this \app\core\View
+     * */
+    $this->title = 'Register'; 
 ?>
 
 <h1>Sign Up</h1>
