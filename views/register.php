@@ -7,7 +7,7 @@
 
 <h1>Sign Up</h1>
 
-<?php $form = app\core\form\Form::begin('post') ?>
+<?php $form = app\core\form\Form::begin('', 'post') ?>
 
 <div class="row">
     <div class="col">

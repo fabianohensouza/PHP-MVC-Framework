@@ -14,7 +14,7 @@ use app\models\Model;
 class Form
 {
     
-    public static function begin(string $method, string $action = '')
+    public static function begin(string $action, string $method)
     {
         echo sprintf('<form action="%s" method="%s">', $action, $method);
         return new Form();

@@ -6,6 +6,8 @@ namespace app\controllers;
 use app\core\Request;
 use app\core\Controller;
 use app\core\Application;
+use app\core\form\ContactForm;
+use app\core\Response;
 
 /**
  * Class SiteController
@@ -23,17 +25,18 @@ class SiteController extends Controller
         return $this->render('home', $params);
     }
 
-    public function contact()
+    public function contact(Request $request, Response $response)
     {
-        return $this->render('contact');
-    }
-
-    public function handleContact(Request $request)
-    {
-        echo '<pre>';
-        var_dump($request->getBody());
-        echo '</pre>';
-        exit;
-        return 'Handling post data!';
+        $contact = new ContactForm();
+        if($request->isPost()) {
+            $contact->loadData($request->getBody());
+            if($contact->validate() && $contact->send()) {
+                Application::$app->session->setFlahsh('success', 'Thanks to contacting us!');
+                return $response->redirect('/contact');
+            } 
+        }
+        return $this->render('contact', [
+                                            'model' => 'contact'
+                                        ]);
     }
 }
