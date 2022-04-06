@@ -27,7 +27,7 @@ class Form
 
     public function field(Model $model, string $attribute)
     {
-        return new Field($model, $attribute);
+        return new InputField($model, $attribute);
     }
     
 }

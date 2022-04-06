@@ -30,6 +30,7 @@ class SiteController extends Controller
         $contact = new ContactForm();
         if($request->isPost()) {
             $contact->loadData($request->getBody());
+            
             if($contact->validate() && $contact->send()) {
                 Application::$app->session->setFlahsh('success', 'Thanks to contacting us!');
                 return $response->redirect('/contact');

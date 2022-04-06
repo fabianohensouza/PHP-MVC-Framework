@@ -34,4 +34,9 @@ class ContactForm extends Model
             'message' => 'Write your message'
         ];
     }
+
+    public function send()
+    {
+        return true;
+    }
 }
