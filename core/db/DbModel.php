@@ -1,15 +1,16 @@
 <?php
 /** User:  FHS Dev */
 
-namespace app\core;
+namespace app\core\db;
 
 use app\models\Model;
+use app\core\Application;
 
 /**
  * Class DbModel
  *
  *@author FHS Dev <fhsdev@gmail.com>
- *@package app\core
+ *@package app\core\db
  */
 abstract class DbModel extends Model
 {
